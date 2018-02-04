@@ -1,0 +1,41 @@
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr {
+  padding: 0px;
+  margin: 0px;
+}
+
+td {
+  border: 1px solid blue;
+  width: 8%;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation,
+th {
+  background-color: lightgrey;
+  border: 1px solid lightgrey;
+  text-align: center;
+}
+
+.no-border {
+  border: none;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+#game-play-ships{
+  width:10em;
+}
+
+.gameBoard{
+  width:25em;
+  height:25em;
+}
