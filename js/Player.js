@@ -1,11 +1,22 @@
 BattleShip.Player = class{
 
-  constructor(opponentType){
+  constructor(opponentType, name){
+    this.playerName = name;
+    if(this.playerName === undefined){
+      this.playerName = 'Anonn'+Math.random();
+    }
     if(opponentType === 'undefined'){
-      this.PlayerType = 'computer';
+      this.playerType = 'computer';
+    }
+    else{
+      this.playerType = opponentType;
     }
 
   }
+  getPlayerType(){
+    return this.playerType;
+  }
+
   //this is where you will make your own placement function
   getPlacementForPiece(pieceName){
     let returnLocation = {location : '' , direction : ''};

@@ -13,13 +13,16 @@
     };
     //this is just so you know what options are for directions.
     this.directions = ['horizontal','vertical'];
-    if(opponentType == 'computer'){
+    if(Player.PlayerType == 'computer'){
       for(piece in this.pieces){
         let newPlacement = getNewPlacementFor(piece);
         this.placePiece(piece , newPlacement.location, newPlacement.direction);
       }
     }
+    
   }
+
+  
 
   placePiece(pieceName,location,direction){
 

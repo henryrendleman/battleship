@@ -39,3 +39,9 @@ th {
   width:25em;
   height:25em;
 }
+
+.placed-on{
+  font-weight:bold;
+  content:'*';
+  color:red;
+}
