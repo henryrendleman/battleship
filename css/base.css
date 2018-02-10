@@ -40,8 +40,32 @@ th {
   height:25em;
 }
 
-.placed-on{
+.battleship{
   font-weight:bold;
-  content:'*';
+  content:'B';
+  color:red;
+}
+
+.carrier{
+  font-weight:bold;
+  content:'C';
+  color:red;
+}
+
+.submarine{
+  font-weight:bold;
+  content:'S';
+  color:red;
+}
+
+.destroyer{
+  font-weight:bold;
+  content:'D';
+  color:red;
+}
+
+.cruiser{
+  font-weight:bold;
+  content:'C';
   color:red;
 }

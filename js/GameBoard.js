@@ -11,6 +11,7 @@
       submarine : 3,
       destroyer : 2,
     };
+    this.placedPieces = [];
     //this is just so you know what options are for directions.
     this.directions = ['horizontal','vertical'];
     if(Player.PlayerType == 'computer'){
@@ -23,9 +24,16 @@
   }
 
   
+  /**
+   * 
+   * @param {string} pieceName is the name of the piece
+   * @param {array} locations is an array of locations on the board that it will fill
+   */
+  placePiece(pieceName,locations){
+    let allPlaced = false;
+    
 
-  placePiece(pieceName,location,direction){
-
+    return allPlaced;
   }
 
   checkMove(moveLocation){
@@ -43,6 +51,24 @@
 
   showOpponentCall(callLocationColumn,callLocationRow){
 
+  }
+
+  getCurrentlyPlacingPiece(){
+    $.each(allPieces,function(key,value) {
+      if(!this.placedPieces.contains(key)){
+        return key;
+      }
+    })
+    return 'none';
+  }
+
+  getCurrentlyPlacingPieceMessage(){
+    $.each(allPieces,function(key,value) {
+      if(!this.placedPieces.contains(key)){
+        return `Place the ${key} of ${value} pieces`;
+      }
+    })
+    return '';
   }
 
  }

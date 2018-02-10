@@ -17,31 +17,30 @@ function setupGame(){
 }
 
 function askPlayerToPlacePieces(player, playerBoardId){
-  let allPieces = player.board.pieces;
-  console.log(allPieces);
   
   $('#'+playerBoardId+' td').not('.navigation').on('click',function(){
-    $(this).addClass('placed-on');
-  });
-  $.each(allPieces,function(key,value) {
-    let neededToPlace = 0;
-    if($('.placed-on').length == value){
-      $('#messageCenter').html(`Place your ${key} for ${value} blocks`);
-    
+    let currentPiece = player.board.getCurrentlyPlacingPiece();
+    $(this).addClass(currentPiece);
+    let allThisPiecePlaced = player.board.placePiece(currentPiece,getLocationsForPlacedPiece(currentPiece));
+    if(allThisPiecePlaced){
+      let message = player.board.getCurrentlyPlacingPieceMessage();
+      if(message.length){
+        $('#messageCenter').html(message);
+      }
+      else{
+        $('#'+playerBoardId+' td').not('.navigation').off('click');
+      }
     }
-    else{
-      setTimeout()
-    }
-    
   });
-  
-  function startPlacement(){
-    
-  }
-
+  $('#messageCenter').html(player.board.getCurrentlyPlacingPieceMessage());
+    // $.each(allPieces,function(key,value) {
+  //   $('#messageCenter').html(`Place your ${key} for ${value} blocks`);
+  //   while ($('.placed-on').length != value) {
+  //     //wait 15 seconds and check again
+  //   }
 
 }
 
-function highlightAndCheck(){
-
+getLocationsForPlacedPiece(pieceName){
+  
 }
