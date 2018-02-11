@@ -38,9 +38,26 @@
    */
   placePiece(pieceName,locations){
     let allPlaced = false;
-    
-
+    try{
+      if(this.pieces[pieceName] == locations.length){
+        for(let pos = 0; pos < locations.length; pos++){
+          let location = locations[pos];
+          this.board[location[1]][location[0]];
+        }
+        allPlaced = true;
+        this.placedPieces.push(pieceName);
+      }
+    }
+    catch(e){
+      console.log(e);
+    }
     return allPlaced;
+  }
+
+  validatePlacement(){
+    let validated = true;
+
+    return validated;
   }
 
   checkMove(moveLocation){

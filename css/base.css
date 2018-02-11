@@ -40,7 +40,7 @@ th {
   height:25em;
 }
 
-.battleship{
+.battleship:after{
   font-weight:bold;
   content:'B';
   color:red;
@@ -52,19 +52,19 @@ th {
   color:red;
 }
 
-.submarine{
+.submarine:after{
   font-weight:bold;
   content:'S';
   color:red;
 }
 
-.destroyer{
+.destroyer:after{
   font-weight:bold;
   content:'D';
   color:red;
 }
 
-.cruiser{
+.cruiser:after{
   font-weight:bold;
   content:'C';
   color:red;
