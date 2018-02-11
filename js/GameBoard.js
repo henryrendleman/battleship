@@ -12,6 +12,7 @@
       destroyer : 2,
     };
     this.placedPieces = [];
+    this.boardId = '';
     //this is just so you know what options are for directions.
     this.directions = ['horizontal','vertical'];
     if(Player.PlayerType == 'computer'){
@@ -23,7 +24,13 @@
     
   }
 
+  setId(id){
+    this.boardId = id;
+  }
   
+  getId(){
+    return this.boardId;
+  }
   /**
    * 
    * @param {string} pieceName is the name of the piece
@@ -54,21 +61,27 @@
   }
 
   getCurrentlyPlacingPiece(){
-    $.each(allPieces,function(key,value) {
-      if(!this.placedPieces.contains(key)){
-        return key;
+    let _this = this;
+    let currentlyPlace = 'none';
+    $.each(_this.pieces,function(key,value) {
+      if(_this.placedPieces.indexOf(key) < 0){
+        currentlyPlace = key;
+        return false;
       }
-    })
-    return 'none';
+    });
+    return currentlyPlace;
   }
 
   getCurrentlyPlacingPieceMessage(){
-    $.each(allPieces,function(key,value) {
-      if(!this.placedPieces.contains(key)){
-        return `Place the ${key} of ${value} pieces`;
+    let _this = this;
+    let message = '';
+    $.each(_this.pieces,function(key,value) {
+      if(_this.placedPieces.indexOf(key) < 0){
+        message = `Place the ${key} of ${value} pieces`;
+        return false;
       }
     })
-    return '';
+    return message;
   }
 
  }

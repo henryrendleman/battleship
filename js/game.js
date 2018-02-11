@@ -5,7 +5,8 @@ var player2 = {player : '', board : ''};
 function setupGame(){
   player1.player = new BattleShip.Player('human', `Player 1`);
   player1.board = new BattleShip.GameBoard(player1.player);
-  askPlayerToPlacePieces(player1,'player1Board');
+  player1.board.setId('player1Board');
+  askPlayerToPlacePieces(player1);
   // if( $('#numberOfPlayers').val() == 2 ){
   //   player2.player = new BattleShip.Player('human', `Player 2`);
   //   player2.board = new BattleShip.GameBoard(player2.player);
@@ -16,31 +17,35 @@ function setupGame(){
   // }
 }
 
-function askPlayerToPlacePieces(player, playerBoardId){
+function askPlayerToPlacePieces(player){
   
-  $('#'+playerBoardId+' td').not('.navigation').on('click',function(){
+  $('#'+player.board.getId()+' td').not('.navigation').on('click',function(){
     let currentPiece = player.board.getCurrentlyPlacingPiece();
-    $(this).addClass(currentPiece);
-    let allThisPiecePlaced = player.board.placePiece(currentPiece,getLocationsForPlacedPiece(currentPiece));
+    if($(this).hasClass(currentPiece)){
+      $(this).removeClass(currentPiece);
+    } else{
+      $(this).addClass(currentPiece);
+    }
+    let allThisPiecePlaced = player.board.placePiece(currentPiece,getLocationsForPlacedPiece(player.board,currentPiece));
     if(allThisPiecePlaced){
       let message = player.board.getCurrentlyPlacingPieceMessage();
       if(message.length){
         $('#messageCenter').html(message);
       }
       else{
-        $('#'+playerBoardId+' td').not('.navigation').off('click');
+        $('#'+player.board.getId()+' td').not('.navigation').off('click');
       }
     }
   });
   $('#messageCenter').html(player.board.getCurrentlyPlacingPieceMessage());
-    // $.each(allPieces,function(key,value) {
-  //   $('#messageCenter').html(`Place your ${key} for ${value} blocks`);
-  //   while ($('.placed-on').length != value) {
-  //     //wait 15 seconds and check again
-  //   }
 
 }
 
-getLocationsForPlacedPiece(pieceName){
-  
+function getLocationsForPlacedPiece(board,pieceName){
+  let positions = [];
+  $('#'+board.getId()).find('.'+pieceName).each(function(){
+    positions.push([parseInt($(this).parent().children().first().html()),$(this).prevAll().length-2]);
+  })
+  console.log(positions);
+  return positions;
 }

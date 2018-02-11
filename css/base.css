@@ -46,7 +46,7 @@ th {
   color:red;
 }
 
-.carrier{
+.carrier:after{
   font-weight:bold;
   content:'C';
   color:red;
